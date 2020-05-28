@@ -167,7 +167,7 @@ class WalkAssembliesStep(step.StepChunk):
         names_to_reads = collections.defaultdict(list)
 
         self.logger.log(bam_path)
-        bam = pysam.AlignmentFile(bam_path)
+        bam = pysam.AlignmentFile(bam_path, check_sq = False)
         for read in bam.fetch():
             if read.reference_length > 45:
                 names_to_reads[read.query_name].append(read)
